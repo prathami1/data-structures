@@ -13,8 +13,9 @@ public class Spiral
 			while( (text=input.readLine())!= null)
 			{
 				//System.out.println(text);
-				int num = Integer.parseInt(text);
-				createSpiral(num);
+				int SR = 0, SC = 0, ER = (Integer.parseInt(text)-1), EC = (Integer.parseInt(text)-1);
+				createBoard(ER, EC);
+
 				output+=text;
 			}
 		}
@@ -23,16 +24,16 @@ public class Spiral
 			System.err.println("File does not exist");
 		}
 	}
-	public void createSpiral(int num)
+	public static void createBoard(int ER, int EC)
 	{
-		for(int i = 0; i < num; i++)
-		{
-			for(int j = 0; j < num; j++)
-			{
-				String[][] pattern = new String[i][j];
-				pattern[i][j] = "-";
-				System.out.println(pattern[i][j]);
+		String[][] board = new String[ER + 1][EC + 1];
+
+		for (int i = 0; i <= ER; i++) {
+			for (int j = 0; j <= EC; j++) {
+				board[i][j] = "- ";
+				System.out.print(board[i][j]);
 			}
+			System.out.println();
 		}
 	}
 }
