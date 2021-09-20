@@ -2,91 +2,88 @@ import java.io.*;
 
 public class Spiral
 {
-	public static void main(String args[])
-	{
-		File name = new File("SpiralInput.txt");
-		try
-		{
-			BufferedReader input = new BufferedReader(new FileReader(name));
+    public static void main(String[] args)
+    {
+       File name = new File("SpiralInput.txt");
 
-			String text,output="";
-			while( (text=input.readLine())!= null)
-			{
-				//System.out.println(text);
-				int SR = 0, SC = 0, ER = (Integer.parseInt(text)-1), EC = (Integer.parseInt(text)-1);
-				createBoard(ER, EC);
+        try
+        {
+            BufferedReader input = new BufferedReader(new FileReader(name));
+            String text,output="";
 
-				output+=text;
-			}
+            while ((text = input.readLine()) != null)
+            {
 
-                        //new method
+                int SR = 0, SC = 0, ER = (Integer.parseInt(text)-1), EC = (Integer.parseInt(text)-1);
 
-                while (startRow <= endRow && startColumn <= endColumn) {
+                String[][] board = new String[ER + 1][EC + 1];
 
-                    // Going Right
-                    for (int c = startColumn; c <= endColumn; c++) {
-                        spiral[startRow][c] = "* ";
-                        // System.out.println(spiral[startRow][c]);
+                for (int i = 0; i <= ER; i++)
+                {
+                    for (int j = 0; j <= EC; j++)
+                    {
+                        board[i][j] = "- ";
                     }
-                    startRow++;
-
-                    if (startColumn >= 1)
-                        startColumn++;
-
-                    // Going Down
-                    for (int r = startRow; r <= endRow; r++) {
-                        spiral[r][endColumn] = "* ";
-                        // System.out.println(spiral[r][endColumn]);
-                    }
-                    endColumn--;
-                    startRow++;
-
-                    // Going Left
-                    for (int c = endColumn; c >= startColumn; c--) {
-                        spiral[endRow][c] = "* ";
-                        // System.out.println(spiral[endRow][c]);
-                    }
-                    endColumn--;
-                    endRow--;
-
-                    // Going Up
-                    for (int r = endRow; r >= startRow; r--) {
-                        spiral[r][startColumn] = "* ";
-                        // System.out.println(spiral[r][startColumn]);
-                    }
-                    endRow--;
-                    startColumn++;
                 }
 
-                if (spiral.length % 4 == 2) {
-                    spiral[(spiral.length) / 2][(spiral.length - 2) / 2] = "- ";
+                while (SR <= ER && SC <= EC)
+                {
+
+                    for (int c = SC; c <= EC; c++)
+                    {
+                        board[SR][c] = "* ";
+                    }
+                    SR++;
+
+                    if (SC >= 1)
+                    {
+                        SC++;
+					}
+
+                    for (int r = SR; r <= ER; r++)
+                    {
+                        board[r][EC] = "* ";
+                    }
+                    EC--;
+                    SR++;
+
+                    for (int c = EC; c >= SC; c--)
+                    {
+                        board[ER][c] = "* ";
+                    }
+                    EC--;
+                    ER--;
+
+                    for (int r = ER; r >= SR; r--)
+                    {
+                        board[r][SC] = "* ";
+                    }
+                    ER--;
+                    SC++;
                 }
 
-                for (int i = 0; i <= spiral.length - 1; i++) {
-                    for (int k = 0; k <= spiral.length - 1; k++) {
-                        System.out.print(spiral[i][k]);
+                if (board.length % 4 == 2)
+                {
+                    board[(board.length) / 2][(board.length - 2) / 2] = "- ";
+                }
+
+                for (int i = 0; i <= board.length - 1; i++)
+                {
+                    for (int j = 0; j <= board.length - 1; j++)
+                    {
+                        System.out.print(board[i][j]);
                     }
                     System.out.println();
                 }
-
+				output+=text;
             }
 
-		}
-		catch (IOException io)
-		{
+        }
+        catch (IOException e)
+        {
 			System.err.println("File does not exist");
-		}
-	}
-	public static void createBoard(int ER, int EC)
-	{
-		String[][] board = new String[ER + 1][EC + 1];
+        }
 
-		for (int i = 0; i <= ER; i++) {
-			for (int j = 0; j <= EC; j++) {
-				board[i][j] = "- ";
-				System.out.print(board[i][j]);
-			}
-			System.out.println();
-		}
-	}
+    }
+
 }
