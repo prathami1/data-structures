@@ -18,6 +18,59 @@ public class Spiral
 
 				output+=text;
 			}
+
+                        //new method
+
+                while (startRow <= endRow && startColumn <= endColumn) {
+
+                    // Going Right
+                    for (int c = startColumn; c <= endColumn; c++) {
+                        spiral[startRow][c] = "* ";
+                        // System.out.println(spiral[startRow][c]);
+                    }
+                    startRow++;
+
+                    if (startColumn >= 1)
+                        startColumn++;
+
+                    // Going Down
+                    for (int r = startRow; r <= endRow; r++) {
+                        spiral[r][endColumn] = "* ";
+                        // System.out.println(spiral[r][endColumn]);
+                    }
+                    endColumn--;
+                    startRow++;
+
+                    // Going Left
+                    for (int c = endColumn; c >= startColumn; c--) {
+                        spiral[endRow][c] = "* ";
+                        // System.out.println(spiral[endRow][c]);
+                    }
+                    endColumn--;
+                    endRow--;
+
+                    // Going Up
+                    for (int r = endRow; r >= startRow; r--) {
+                        spiral[r][startColumn] = "* ";
+                        // System.out.println(spiral[r][startColumn]);
+                    }
+                    endRow--;
+                    startColumn++;
+                }
+
+                if (spiral.length % 4 == 2) {
+                    spiral[(spiral.length) / 2][(spiral.length - 2) / 2] = "- ";
+                }
+
+                for (int i = 0; i <= spiral.length - 1; i++) {
+                    for (int k = 0; k <= spiral.length - 1; k++) {
+                        System.out.print(spiral[i][k]);
+                    }
+                    System.out.println();
+                }
+
+            }
+
 		}
 		catch (IOException io)
 		{
