@@ -9,7 +9,7 @@ public class AmicableNumbers
     }
         public AmicableNumbers()
         {
-            File name = new File("/Users/pratham/Downloads/data-structures-main/AmicableNumbers/AmicableInput.txt");
+            File name = new File("AmicableInput.txt");
             try
             {
                 BufferedReader input = new BufferedReader(new FileReader(name));
