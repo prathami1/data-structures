@@ -9,7 +9,7 @@ public class AmicableNumbers
     }
         public AmicableNumbers()
         {
-            File name = new File("AmicableInput.txt");
+            File name = new File("/Users/pratham/Downloads/data-structures-main/AmicableNumbers/AmicableInput.txt");
             try
             {
                 BufferedReader input = new BufferedReader(new FileReader(name));
@@ -67,6 +67,32 @@ public class AmicableNumbers
             String sFacList = sFacs.substring(1, sForm-1) + " and" + sFacs.substring(sForm+1, sFacs.length()-1);
             System.out.println("Factors of " + fNum + " are " + fFacList + ". Sum is " + sNum + ".");
             System.out.println("Factors of " + sNum + " are " + sFacList + ". Sum is " + fNum + ".");
+        }
+        else
+        {
+            System.out.println("The numbers " + fNum + " and " + sNum + " are not amicable.");
+            String fFacs = fFac.toString();
+            String sFacs = sFac.toString();
+            if(fNum > 1 && sNum > 1)
+            {
+                int fForm = fFacs.lastIndexOf(",");
+                int sForm = sFacs.lastIndexOf(",");
+                String fFacList = fFacs.substring(1, fForm-1) + " and" + fFacs.substring(fForm+1, fFacs.length()-1);
+                String sFacList = sFacs.substring(1, sForm-1) + " and" + sFacs.substring(sForm+1, sFacs.length()-1);
+                System.out.println("Factors of " + fNum + " are " + fFacList + ". Sum is " + fFacSum + ".");
+                System.out.println("Factors of " + sNum + " are " + sFacList + ". Sum is " + sFacSum + ".");
+            }
+            /*else
+            {
+                if(fNum > 1 && fFac.length() > 1 )
+                {
+                    int fForm = fFacs.lastIndexOf(",");
+                }
+                else if(sNum < 1)
+                {
+                    int sForm = sFacs.lastIndexOf(",");
+                }
+            }*/
         }
     }
 }
