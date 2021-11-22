@@ -10,7 +10,7 @@ public class LucasNumbers
 	
 	public LucasNumbers() {
 		
-		File name = new File("/Users/pratham/Downloads/data-structures-main/LucasNumbers/LucasInput.txt");
+		File name = new File("/Users/pratham/Documents/data-structures/LucasNumbers/LucasInput.txt");
 		try
 		{
 			BufferedReader input = new BufferedReader(new FileReader(name));
@@ -37,7 +37,7 @@ public class LucasNumbers
 
         if (x == 0)
             return first;
-
+		//for(int i = 2; i <= 0; i++)
         for (BigInteger i = BigInteger.valueOf(2); i.compareTo(BigInteger.valueOf(x)) <= 0; i = i.add(BigInteger.ONE)) {
             third = first.add(second);
             first = second;

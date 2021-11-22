@@ -1,11 +1,10 @@
-import java.io.*;	//this is the only one that is necessary for this template.
-//You might need others depending on the task.
+import java.io.*;
 
 public class Reducer
 {
 	public Reducer()
 	{
-		File name = new File("ReducerInput.txt");
+		File name = new File("Refresher Tasks/Reducer/ReducerInput.txt");
 		try
 		{
 			BufferedReader input = new BufferedReader(new FileReader(name));
@@ -36,6 +35,15 @@ public class Reducer
 		numer/=gcf;
 		denom/=gcf;
 
+		/*if(numer == 0)
+		{
+			System.out.println("\t0");
+		}
+		else if(denom == 0)
+		{
+			System.out.println("Divide by 0 error");
+		}*/
+
 		if(numer > denom)
 		{
 			int rem = numer % denom;
@@ -57,6 +65,7 @@ public class Reducer
 		{
 			System.out.println("\t" + numer + "/" + denom);
 		}
+		
 	}
 
 	public int findGCF(int numer, int denom)

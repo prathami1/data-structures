@@ -4,7 +4,7 @@ public class Spiral
 {
     public static void main(String[] args)
     {
-       File name = new File("SpiralInput.txt");
+       File name = new File("/Users/pratham/Downloads/data-structures-main/Spiral/SpiralInput.txt");
 
         try
         {

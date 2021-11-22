@@ -82,17 +82,23 @@ public class AmicableNumbers
                 System.out.println("Factors of " + fNum + " are " + fFacList + ". Sum is " + fFacSum + ".");
                 System.out.println("Factors of " + sNum + " are " + sFacList + ". Sum is " + sFacSum + ".");
             }
-            /*else
+            else
             {
-                if(fNum > 1 && fFac.length() > 1 )
+                if(fNum < 1 && fFac.size() > 1)
                 {
                     int fForm = fFacs.lastIndexOf(",");
+                    String fFacList = fFacs.substring(1, fForm-1) + " and" + fFacs.substring(fForm+1, fFacs.length()-1);
+                    System.out.println("Factors of " + fNum + " are " + fFacList + ". Sum is " + fFacSum + ".");
+                    System.out.println(sNum + " is Prime, and therefore only has a factor of 1");
                 }
-                else if(sNum < 1)
+                else if(sNum > 1 && sFac.size() > 1)
                 {
                     int sForm = sFacs.lastIndexOf(",");
+                    String sFacList = sFacs.substring(1, sForm-1) + " and" + sFacs.substring(sForm+1, sFacs.length()-1);
+                    System.out.println(fNum + " is Prime, and therefore only has a factor of 1");
+                    System.out.println("Factors of " + sNum + " are " + sFacList + ". Sum is " + sFacSum + ".");
                 }
-            }*/
+            }
         }
     }
 }

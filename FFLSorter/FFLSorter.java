@@ -1,10 +1,14 @@
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class FFLSorter {
 
-    public static void main(String[] args) {
-        FFLSorter app = new FFLSorter();
+    public static void main(String[] args) 
+    {
+        new FFLSorter();
     }
 
     public FFLSorter() {
@@ -12,24 +16,28 @@ public class FFLSorter {
 
         try {
             BufferedReader input = new BufferedReader(new FileReader(filename));
-            String text,output="";
+            String text;
 
+            input.readLine();
             ArrayList<Player> players = new ArrayList<Player>();
-            while ((text = input.readLine()) != null) {
+            while ((text = input.readLine()) != null) 
+            {
                 String[] arr = text.split(";");
                 ArrayList<String> temp = new ArrayList<String>();
-                for (int i = 0; i < arr.length; i++) {
-                    if (i == 1 || i == 5 || i == 7 || i == 8) {
+                for (int i = 0; i < arr.length; i++) 
+                {
+                    if (i == 1 || i == 5 || i == 7 || i == 8)
                         temp.add(arr[i]);
-                    }
                 }
                 players.add(new Player(temp.get(0), temp.get(2), temp.get(3), temp.get(1)));
             }
 
-            for (int i = 1; i < players.size(); i++) {
+            for (int i = 1; i < players.size(); i++)
+            {
                 Player temp = players.get(i);
                 int j = i - 1;
-                while (j >= 0 && (temp.compareTo(players.get(j)) == -1)) {
+                while (j >= 0 && (temp.compareTo(players.get(j)) == -1)) 
+                {
                     players.set(j + 1, players.get(j));
                     j--;
                 }
@@ -39,35 +47,43 @@ public class FFLSorter {
             for (Player player : players)
                 System.out.println(player);
 
-        } catch (IOException e) {
+        } 
+        catch (IOException e) 
+        {
             System.out.println("File Not Found");
         }
 
     }
 
-    public class Player implements Comparable<Player> {
+    public class Player implements Comparable<Player> 
+    {
         private String hiRd, lowRd, draftPos, name;
 
-        public Player(String name, String hiRd, String lowRd, String draftPos) {
+        public Player(String name, String hiRd, String lowRd, String draftPos) 
+        {
             this.name = name;
             this.hiRd = hiRd;
             this.lowRd = lowRd;
             this.draftPos = draftPos;
         }
 
-        public String gethiRd() {
+        public String gethiRd() 
+        {
             return hiRd;
         }
 
-        public String getlowRd() {
+        public String getlowRd() 
+        {
             return lowRd;
         }
 
-        public String getdraftPos() {
+        public String getdraftPos() 
+        {
             return draftPos;
         }
 
-        public int compareTo(Player p2) {
+        public int compareTo(Player p2) 
+        {
             String[] hi1 = hiRd.split("\\.");
             String[] low1 = lowRd.split("\\.");
             String[] hi2 = p2.gethiRd().split("\\.");
