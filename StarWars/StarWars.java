@@ -5,7 +5,7 @@ public class StarWars
 {
     public StarWars()
     {
-        File name = new File("StarWars/input.csv");
+        File name = new File("input.csv");
         Stack<Character> male = new Stack<Character>();   
         Stack<Character> female = new Stack<Character>();   
         Stack<Character> droids = new Stack<Character>();   
@@ -51,7 +51,7 @@ public class StarWars
         while(!birthYear.empty()) 
         {
             Character character = birthYear.pop();
-            if(character.homeWorld.equals("NA"))
+            if(!character.homeWorld.equals("NA"))
             {
                 if(character.birthYear.contains("."))
                 {
