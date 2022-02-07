@@ -19,14 +19,14 @@ public class stringFrequency
 		try
 		{
 			BufferedReader input = new BufferedReader(new FileReader(name));
-
 			String text, output = "";
 			while((text=input.readLine())!= null)
 			{
 				String[] pieces = text.split("");
-				output+=text;
+				output += text;
 				alphaCount(alphabetPieces, pieces, alphaMap);
 			}
+			input.close();
 		}
 		catch (IOException io)
 		{
