@@ -1,0 +1,56 @@
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Stack;
+
+public class LRunner 
+{
+    HashMap<Artist, HashSet<Edge>> artistMap;
+    Artist start, end;
+    Graph graph;
+    Stack<Artist> currentPath;
+    HashSet<Artist> visited;
+    public LRunner()
+    {
+        artistMap = new HashMap<>();
+        currentPath = new Stack<>();
+        visited = new HashSet<>();
+        File file = new File("SimilarArtists.txt");
+		try
+		{
+			BufferedReader input = new BufferedReader(new FileReader(file));
+
+			String text;
+			while( (text=input.readLine())!= null)
+			{
+				String[] pieces = text.split(", ");
+                Artist a1 = new Artist(pieces[0]);
+                Artist a2 = new Artist(pieces[1]);
+
+                graph.addArtist(a1);
+                graph.addArtist(a2);
+
+                graph.addEdge(a1, a2);
+                graph.addEdge(a2, a1);
+
+                if(!artistMap.containsKey(a1))
+                { artistMap.put(a1, new HashSet<Edge>()); }
+                if(!artistMap.containsKey(a2))
+                { artistMap.put(a2, new HashSet<Edge>()); }
+
+                artistMap.get(a1).add(new Edge(a1, a2));
+                artistMap.get(a2).add(new Edge(a2, a1));
+
+                System.out.println("Edges - Connecting artists with similar");
+			}
+		}
+		catch (IOException io)
+		{ System.err.println("File does not exist"); }
+    }
+
+    public static void main(String[] args)
+    { Runner app = new Runner(); }
+}
